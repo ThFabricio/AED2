@@ -39,6 +39,12 @@ int main(int argc, char*argv[]) {
 
                 printf("%d\n", altura(raiz));
 
+            // opção de remover elemento da arvore
+            case 9:
+
+                scanf("%d", &valor);
+                remover = inserir(raiz, valor);
+                
             // saida do menu
             case 99:
 
