@@ -44,6 +44,7 @@ int main(int argc, char*argv[]) {
 
                 scanf("%d", &valor);
                 raiz = remover(raiz, valor);
+                break;
                 
             // saida do menu
             case 99:

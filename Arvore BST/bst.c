@@ -83,6 +83,13 @@ no* remover (no* raiz, int valor){
         }
 
        //caso3: quando o valor da raiz a ser removido possui 2 filhos
+        if(raiz->esq != NULL && raiz ->dir != NULL){
+
+            raiz->valor = maior(raiz->esq);
+            raiz = remover(raiz->esq, raiz->valor);
+            
+            
+        }
  
     }
     
@@ -115,19 +122,15 @@ void preorder (no* raiz){
 
         // Caso recursivo, quando a raiz da arvore esta preenchido
         // Passo 1: chamada para imprimir a raiz da arvore
-
         printf("[%d]", raiz->valor);
 
         // Passo 2: chamada para imprimir toda a sub-arvore /galhos a esquerda da raiz
-
         preorder(raiz->esq);
 
         // Passo 3: chamada para imprimir toda a sub-arvore/galhos a direita da raiz
-
         preorder(raiz->dir);
 
     }
-    
 }
 
 // Função que calcula a altura da arvore
