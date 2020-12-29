@@ -43,7 +43,7 @@ int main(int argc, char*argv[]) {
             case 9:
 
                 scanf("%d", &valor);
-                remover = inserir(raiz, valor);
+                raiz = remover(raiz, valor);
                 
             // saida do menu
             case 99:

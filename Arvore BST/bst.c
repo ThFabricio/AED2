@@ -60,14 +60,14 @@ no* remover (no* raiz, int valor){
     if(raiz->valor == valor){
 
         //caso1: quando o valor a ser removido eh o unico valor existente da raiz
-        if(raiz->esq == NULL && raiz ->dir == NULL){
+        if(raiz->esq == NULL && raiz->dir == NULL){
 
             free(raiz);
             return NULL;
         }
 
         //caso2: quando o valor da raiz a ser removido possui um filho a direita
-        if(raiz->esq == NULL && raiz ->dir != NULL){
+        if(raiz->esq == NULL && raiz->dir != NULL){
 
             no* retorno = raiz->dir;
             free(raiz);
@@ -82,13 +82,8 @@ no* remover (no* raiz, int valor){
             return retorno;
         }
 
-        //caso3: quando o valor da raiz a ser removido possui 2 filhos
-        if(raiz->esq != NULL && raiz ->dir == NULL){
-
-            raiz->valor = maior(raiz->esq);
-            raiz = remover(raiz->esq, raiz->valor);
-        }
-
+       //caso3: quando o valor da raiz a ser removido possui 2 filhos
+ 
     }
     
     //funções de procura do valor a se remover
@@ -199,6 +194,6 @@ int maior(no* raiz){
     }
     if (raiz->esq == NULL && raiz ->dir != NULL){
 
-        return maior(raiz->esq);
+        return maior(raiz->dir);
     }
 }
