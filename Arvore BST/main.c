@@ -34,10 +34,44 @@ int main(int argc, char*argv[]) {
                 printf("\n");
                 break;
 
-            // opçao de que calcula a altura da arvore
+            // opçao de imprimir a arvore em In-Order
             case 3:
 
-                printf("%d\n", altura(raiz));
+                inorder(raiz);
+                printf("\n");
+                break;
+
+            // opção de imprimir a arvore em Pós-Order
+            case 4:
+
+                posorder(raiz);
+                printf("\n");
+                break;
+
+            // opção de imprimir a arvore de forma reversa
+            case 5:
+
+                reverse(raiz);
+                printf("\n");
+                break;
+
+            // opção que conta a quantidade de numeros pares da arvore
+            case 6:
+
+                printf("%d\n", qntdPar(raiz));
+                break;
+
+            // função que trasforma o nó de uma arvore em quadrado
+            case 7:
+
+                quadrado(raiz);
+                break;
+
+            case 8:
+
+                scanf("%d", &valor);
+                printf("%d", existe(raiz, valor));
+                break;
 
             // opção de remover elemento da arvore
             case 9:

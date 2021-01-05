@@ -67,7 +67,7 @@ no* remover (no* raiz, int valor){
         }
 
         //caso2: quando o valor da raiz a ser removido possui um filho a direita
-        if(raiz->esq == NULL && raiz->dir != NULL){
+        else if(raiz->esq == NULL && raiz->dir != NULL){
 
             no* retorno = raiz->dir;
             free(raiz);
@@ -75,7 +75,7 @@ no* remover (no* raiz, int valor){
         }
 
         //caso2: quando o valor da raiz a ser removido possui um filho a esquerda
-        if(raiz->esq != NULL && raiz ->dir == NULL){
+        else if(raiz->esq != NULL && raiz ->dir == NULL){
 
             no* retorno = raiz->esq;
             free(raiz);
@@ -83,12 +83,7 @@ no* remover (no* raiz, int valor){
         }
 
        //caso3: quando o valor da raiz a ser removido possui 2 filhos
-        if(raiz->esq != NULL && raiz ->dir != NULL){
-
-            raiz->valor = maior(raiz->esq);
-            raiz = remover(raiz->esq, raiz->valor);
-            
-            
+        else{
         }
  
     }
@@ -111,11 +106,9 @@ no* remover (no* raiz, int valor){
 
 // Função de print da arvore em Pré-Order
 // Em Pré=Order primeiro se imprime a raiz, depois pecorre os seus galhos
-
 void preorder (no* raiz){
 
     // Caso Base, raiz vazia
-
     if(raiz == NULL){
 
     }else{
@@ -133,8 +126,134 @@ void preorder (no* raiz){
     }
 }
 
-// Função que calcula a altura da arvore
+// Função de print da arvore em In-Order
+// Em In-Order se pecorre primeiro o lado esquerdo, na volta printa e apos pecorre o lado esquerdo
+void inorder(no* raiz){
 
+    // Caso Base, raiz vazia
+    if(raiz == NULL){
+
+    }else{
+
+        // Caso recursivo, quando a raiz da arvore esta preenchido
+
+        // Passo 1: Percorrimento do lado esquerdo da arvore
+        inorder(raiz->esq);
+
+        // Passo 2: Chamada para imprimir a raiz da arvore, na volta do perccorimento do lado esquerdo
+        printf("[%d]", raiz->valor);
+
+        // Passo 3: Percorrimento do lado direito da arvore
+        inorder(raiz->dir);
+    }
+}
+
+// Função que printa a arvore em Pós-Order
+// Em Pós-Order se pecorrer todo o lado lado esquerdo e direito, e depois printa
+void posorder(no* raiz){
+
+    // Caso Base, raiz vazia
+    if(raiz == NULL){
+
+    }else{
+
+        // Caso recursivo, quando a raiz da arvore esta preenchido
+
+        // Passo 1: Percorrimento do lado esquerdo da arvore
+        posorder(raiz->esq);
+
+        // Passo 2: Percorrimento do lado direito da arvore
+        posorder(raiz->dir);
+
+        // Passo 3: Chamada para imprimir a raiz da arvore
+        printf("[%d]", raiz->valor);
+    }
+}
+
+// Função que imprimi a arvore em modo reverso
+// Em reverse se pecorre primeiro o lado direito, printa apos e depois pecorre o esquerdo
+void reverse(no* raiz){
+
+    // Caso Base, raiz vazia
+    if(raiz == NULL){
+
+    }else{
+
+        // Caso recursivo, quando a raiz da arvore esta preenchido
+
+        // Passo 1: Percorrimento do lado direito da arvore
+        reverse(raiz->dir);
+
+        // Passo 2: Chamada para imprimir a raiz da arvore, na volta do perccorimento do lado direto
+        printf("[%d]", raiz->valor);
+
+        // Passo 3: Percorrimento do lado esquerdo da arvore
+        reverse(raiz->esq);
+    }
+
+
+}
+
+// Função que conta quantos numeros pares existe na arvore
+int qntdPar(no* raiz){
+
+    if(raiz == NULL){
+        return 0;
+    }
+    else{
+
+     if((raiz->valor%2)== 0){
+        return 1 + qntdPar(raiz->esq) + qntdPar(raiz->dir);
+        }
+    else
+    {
+        return 0 + qntdPar(raiz->esq) + qntdPar(raiz->dir);
+    }
+    }   
+}
+
+// função que eleve os nó da arvore ao quadrado
+no* quadrado(no* raiz){
+
+    if(raiz==NULL){
+
+    }else{
+    
+        raiz->valor = raiz->valor*raiz->valor;
+        quadrado(raiz->esq);
+        quadrado(raiz->dir);
+        return raiz;
+    }
+}
+
+// função que procura se um numero e existente na arvore
+int existe(no* raiz, int valor){
+
+    if(raiz == NULL){
+
+    }
+    else{
+
+        if(raiz->valor == valor){
+
+            return 1;
+        }
+        else if(raiz->esq != NULL){
+
+            return existe(raiz->esq, valor);
+        } 
+        else if(raiz->dir != NULL){
+
+            return existe(raiz->dir, valor);
+        }
+        else{
+
+            return 0;
+        }
+    }
+}
+
+// Função que calcula a altura da arvore
 int altura (no* raiz){
 
     // caso base da contagem
@@ -161,7 +280,6 @@ int max(int a, int b){
 }
 
 // Função que conta o numeros de elementos da arvore
-
 int cont(no* raiz){
 
     if(raiz == NULL){
@@ -174,7 +292,6 @@ int cont(no* raiz){
 }
 
 // Função que soma os elementos da arvore
-
 int somar(no* raiz){
 
     if(raiz == NULL){
@@ -184,19 +301,4 @@ int somar(no* raiz){
         return raiz->valor + somar(raiz->esq) + somar(raiz->dir);
     }
     
-}
-
-// Função que calcula qual o maior valor a esquerda da arvore
-
-int maior(no* raiz){
-
-    // caso1: quando não ah mais valores a direita da raiz
-    if((raiz->esq == NULL && raiz ->dir == NULL) || (raiz->esq != NULL && raiz->dir == NULL)){
-
-        return raiz->valor;
-    }
-    if (raiz->esq == NULL && raiz ->dir != NULL){
-
-        return maior(raiz->dir);
-    }
 }
