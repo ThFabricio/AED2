@@ -46,6 +46,7 @@ int cont(no* raiz);
 // somador de elemtos da arvore
 int somar(no * raiz);
 
-
+// função de procura do maior valor do lado esquerdo
+int procura(no* raiz);
 
 #endif

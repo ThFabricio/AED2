@@ -84,6 +84,10 @@ no* remover (no* raiz, int valor){
 
        //caso3: quando o valor da raiz a ser removido possui 2 filhos
         else{
+
+            raiz->valor = procura(raiz->esq);
+            raiz->esq = remover(raiz->esq,raiz->valor);
+            return raiz;
         }
  
     }
@@ -232,7 +236,6 @@ int existe(no* raiz, int valor){
     if(raiz == NULL){
 
         return 0;
-
     }
     else{
 
@@ -318,4 +321,23 @@ int somar(no* raiz){
         return raiz->valor + somar(raiz->esq) + somar(raiz->dir);
     }
     
+}
+
+// função que procura o maior valor do lado esquerdo da arvore
+int procura(no* raiz){
+
+    if(raiz == NULL){
+
+    }
+    else{
+
+        if(raiz->dir != NULL){
+
+            return procura(raiz->dir);
+        }
+        else{
+
+            return raiz->valor;
+        }
+    }
 }

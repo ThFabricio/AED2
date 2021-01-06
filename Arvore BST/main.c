@@ -61,16 +61,17 @@ int main(int argc, char*argv[]) {
                 printf("%d\n", qntdPar(raiz));
                 break;
 
-            // função que trasforma o nó de uma arvore em quadrado
+            // opção que trasforma o nó de uma arvore em quadrado
             case 7:
 
                 quadrado(raiz);
                 break;
 
+            // opção que procura um numero existente na arvore
             case 8:
 
                 scanf("%d", &valor);
-                printf("%d", existe(raiz, valor));
+                printf("%d\n", existe(raiz, valor));
                 break;
 
             // opção de remover elemento da arvore
