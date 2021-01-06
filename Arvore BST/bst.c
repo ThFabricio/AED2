@@ -231,6 +231,8 @@ int existe(no* raiz, int valor){
 
     if(raiz == NULL){
 
+        return 0;
+
     }
     else{
 
@@ -238,18 +240,33 @@ int existe(no* raiz, int valor){
 
             return 1;
         }
-        else if(raiz->esq != NULL){
+        else {
 
-            return existe(raiz->esq, valor);
-        } 
-        else if(raiz->dir != NULL){
+            if(valor > raiz->valor){
 
-            return existe(raiz->dir, valor);
+                if(raiz->dir != NULL){
+
+                    return existe(raiz->dir, valor);
+                } 
+                else{
+
+                    return 0;
+                }
+            }
+            if(valor < raiz->valor){
+
+                if(raiz->esq != NULL){
+
+                    return existe(raiz->esq, valor);
+                } 
+                else{
+
+                    return 0;
+                }
+            }
         }
-        else{
-
-            return 0;
-        }
+        
+        return 0;
     }
 }
 
