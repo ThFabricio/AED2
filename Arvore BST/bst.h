@@ -1,52 +1,39 @@
-#ifndef _BST_H
-#define _BST_H
+#ifndef BST_H
+#define BST_H
 
-// estrutura dos nó da arvore
 typedef struct no {
-    struct no *esq, *dir;
     int valor;
+    struct no *esq, *dir;
 } no;
 
-// função que ira inserir dados na arvore
-no* inserir(no* raiz, int valor);
+typedef no* arvore;
 
-// função que remove dados da arvore
-no* remover(no* raiz, int valor);
+arvore inserir (arvore raiz, int valor);
 
-// função que imprimi a arvore em Pré-Order
-void preorder(no* raiz);
+arvore remover (arvore raiz, int valor);
+
+void preorder(arvore raiz);
 
 // função que imprimi a arvore em In-Order
-void inorder(no* raiz);
+void inorder(arvore raiz);
 
 // função que imprimi a arvore em Pós-Order
-void posorder(no* raiz);
+void posorder(arvore raiz);
 
 // função que imprimi a arvore em modo reverso
-void reverse(no* raiz);
+void reverse(arvore raiz);
 
-// função que conta as raizes com par da arvore
-int qntdPar(no* raiz);
+// função que conta a quantidade de Primos na arvore
+void qntdPrimos(arvore raiz);
 
-// função que torna os nó de uma arvore em seus quadrados
-no* quadrado(no* raiz);
+// função que reajusta a arvore
+arvore reajustar(arvore raiz, int porcentagem);
 
 // função que verifica se um valor é existente na arvore
-int existe(no* raiz, int valor);
-
-// calculo da altura da arvore
-int altura(no* raiz);
-
-// calculo da diferenca entra 2 inteiros
-int max(int a, int b);
-
-// contador de de elementos da arvore
-int cont(no* raiz);
-
-// somador de elemtos da arvore
-int somar(no * raiz);
+int existe(arvore raiz, int valor);
 
 // função de procura do maior valor do lado esquerdo
-int procura(no* raiz);
+int procura(arvore raiz);
+
 
 #endif

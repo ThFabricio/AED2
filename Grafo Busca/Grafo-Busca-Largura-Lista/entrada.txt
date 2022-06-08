@@ -1,0 +1,25 @@
+10 14
+R
+U
+Y
+Q
+S
+V
+W
+T
+X
+Z
+RU
+RY
+UY
+YQ
+QT
+TY
+TX
+XZ
+ZX
+QS
+QW
+WS
+SV
+VW
